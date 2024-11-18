@@ -1,0 +1,1 @@
+6afea73bde7d4e2e8f838b0ed17e966d   -     API key for spoonacular

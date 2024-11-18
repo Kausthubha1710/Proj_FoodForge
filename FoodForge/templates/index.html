@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Recommendation</title>
+</head>
+<body>
+    <h1>Find Recipes Based on Ingredients</h1>
+    <form action="/recommend" method="POST">
+        <label for="ingredients">Enter Ingredients (comma separated):</label>
+        <input type="text" id="ingredients" name="ingredients" required>
+        <br><br>
+        <label for="diet">Diet Preference:</label>
+        <select id="diet" name="diet">
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="low-carb">Low Carb</option>
+            <option value="gluten-free">Gluten-Free</option>
+        </select>
+        <br><br>
+        <button type="submit">Get Recipes</button>
+    </form>
+</body>
+</html>
