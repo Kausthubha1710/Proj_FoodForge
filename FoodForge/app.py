@@ -11,17 +11,24 @@ def home():
 
 @app.route('/recommend', methods=['POST'])
 def recommend():
-    ingredients = request.form['ingredients']
-    diet = request.form['diet']
+    ingredients = request.form.get('ingredients', '')
+    diet = request.form.get('diet', '')
 
-    url = f'https://api.spoonacular.com/recipes/findByIngredients?ingredients={ingredients}&diet={diet}&number=5&apiKey={api_key}'
-    response = requests.get(url)
+    params = {
+        'apiKey': api_key,
+        'ingredients': ingredients,
+        'diet': diet,
+        'number': 5
+    }
+
+    url = 'https://api.spoonacular.com/recipes/findByIngredients'
+    response = requests.get(url, params=params)
 
     if response.status_code == 200:
         recipes = response.json()
         return render_template('results.html', recipes=recipes)
     else:
-        return f"Failed to fetch data: {response.status_code}"
+        return f"Failed to fetch data: {response.status_code} - {response.text}"
 
 if __name__ == '__main__':
     app.run(debug=True)

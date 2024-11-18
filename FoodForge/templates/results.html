@@ -7,15 +7,23 @@
 </head>
 <body>
     <h1>Recommended Recipes</h1>
-    {% for recipe in recipes %}
-        <h2>{{ recipe.title }}</h2>
-        <p>Ingredients:</p>
-        <ul>
-            {% for ingredient in recipe.usedIngredients %}
-                <li>{{ ingredient.name }}</li>
-            {% endfor %}
-        </ul>
-        <a href="https://api.spoonacular.com/recipes/complexSearch" target="_blank">View Recipe</a>
-    {% endfor %}
+    {% if recipes %}
+        {% for recipe in recipes %}
+            <div>
+                <h2>{{ recipe.title }}</h2>
+                <p>Ingredients:</p>
+                <ul>
+                    {% for ingredient in recipe.usedIngredients %}
+                        <li>{{ ingredient.name }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="https://spoonacular.com/recipes/{{ recipe.title | replace(' ', '-') }}-{{ recipe.id }}" target="_blank">
+                    View Recipe
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No recipes found.</p>
+    {% endif %}
 </body>
 </html>
