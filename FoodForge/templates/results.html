@@ -15,7 +15,7 @@
                 <li>{{ ingredient.name }}</li>
             {% endfor %}
         </ul>
-        <a href="https://api.spoonacular.com/recipes/complexSearch" target="_blank">View Recipe</a>
+        <a href="https://api.spoonacular.com/recipes/complexSearch?apiKey={{ spoonacularAPIKEY }}" target="_blank">View Recipe</a>
     {% endfor %}
 </body>
 </html>

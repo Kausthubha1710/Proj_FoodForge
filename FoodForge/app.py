@@ -19,7 +19,7 @@ def recommend():
 
     if response.status_code == 200:
         recipes = response.json()
-        return render_template('results.html', recipes=recipes)
+        return render_template('results.html', recipes=recipes, spoonacularAPIKEY=api_key)
     else:
         return f"Failed to fetch data: {response.status_code}"
 
